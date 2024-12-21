@@ -110,7 +110,13 @@ const reversedArraysOf = function (arrays) {
 };
 
 // remove vowels from ["apple", "banana", "grape"] => ["ppl", "bnn", "grp"]
-const withoutVowelsOf = function (strings) { };
+const withoutVowelsOf = function (strings) {
+  return strings.map(function (string) {
+    return [...string].map(function (char) {
+      return ["a", "e", "i", "o", "u"].includes(char) ? "" : char;
+    }).join("");
+  })
+};
 
 // cumulative sums of [[1, 2, 3], [4, 5, 6]] => [[1, 3, 6], [4, 9, 15]]
 // Example: cumulative sum of [1, 2, 3] is [1, 1+2, 1+2+3]
