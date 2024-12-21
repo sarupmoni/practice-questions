@@ -1,26 +1,26 @@
 // squares of [1, 2, 3] => [1, 4, 9]
-const squaresOf = function (numbers) { 
+const squaresOf = function (numbers) {
   return numbers.map(function (number) {
     return Math.pow(number, 2);
   });
 };
 
 // lengths of ["apple", "banana", "kiwi"] => [5, 6, 4]
-const lengthsOf = function (strings) { 
+const lengthsOf = function (strings) {
   return strings.map(function (string) {
     return string.length;
   });
 };
 
 // uppercase of ["hello", "world"] => ["HELLO", "WORLD"]
-const uppercaseOf = function (strings) { 
+const uppercaseOf = function (strings) {
   return strings.map(function (string) {
     return string.toUpperCase();
   });
 };
 
 // first characters of ["apple", "banana", "kiwi"] => ["a", "b", "k"]
-const firstCharactersOf = function (strings) { 
+const firstCharactersOf = function (strings) {
   return strings.map(function (string) {
     return string.at(0);
   });
@@ -28,21 +28,21 @@ const firstCharactersOf = function (strings) {
 
 // truth values of [0, 1, 2, 3] => [false, true, true, true]
 // Assume non-zero numbers are true, and zero is false
-const truthValuesOf = function (numbers) { 
+const truthValuesOf = function (numbers) {
   return numbers.map(function (number) {
     return number !== 0;
   });
 };
 
 // reverse strings of ["hello", "world"] => ["olleh", "dlrow"]
-const reversedStringsOf = function (strings) { 
+const reversedStringsOf = function (strings) {
   return strings.map(function (string) {
     return [...string].reverse().join("");
   });
 };
 
 // double letters of ["cat", "dog", "bat"] => ["ccaat", "ddoog", "bbaatt"]
-const doubleLettersOf = function (strings) { 
+const doubleLettersOf = function (strings) {
   return strings.map(function (string) {
     return [...string].map(function (letter) {
       return letter.repeat(2);
@@ -51,7 +51,7 @@ const doubleLettersOf = function (strings) {
 };
 
 // boolean negation of [true, false, true] => [false, true, false]
-const negatedBooleansOf = function (booleans) { 
+const negatedBooleansOf = function (booleans) {
   return booleans.map(function (boolean) {
     return !boolean;
   });
@@ -59,21 +59,25 @@ const negatedBooleansOf = function (booleans) {
 
 // character codes of ["a", "b", "c"] => [97, 98, 99]
 // Use the `charCodeAt` method on each string
-const charCodesOf = function (strings) { 
+const charCodesOf = function (strings) {
   return strings.map(function (char) {
     return char.charCodeAt(0);
   });
 };
 
 // extract domain names from ["user1@gmail.com", "admin@yahoo.com"] => ["gmail.com", "yahoo.com"]
-const domainNamesOf = function (emails) { 
+const domainNamesOf = function (emails) {
   return emails.map(function (email) {
     return email.includes("gmail") ? "gmail.com" : "yahoo.com";
   });
 };
 
 // split words in ["hello world", "goodbye moon"] => [["hello", "world"], ["goodbye", "moon"]]
-const splitWordsOf = function (strings) { };
+const splitWordsOf = function (strings) {
+  return strings.map(function (string) {
+    return string.split(" ");
+  });
+};
 
 // join arrays of [["a", "b"], ["c", "d"]] => ["ab", "cd"]
 const joinedArraysOf = function (arrayOfArrays) { };
