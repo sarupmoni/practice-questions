@@ -94,7 +94,13 @@ const repeatedStringsOf = function (strings) {
 };
 
 // count vowels in ["apple", "banana", "grape"] => [2, 3, 2]
-const countVowelsOf = function (strings) { };
+const countVowelsOf = function (strings) {
+  return strings.map(function (string) {
+    return [...string].filter(function (char) {
+      return ["a", "e", "i", "o", "u"].includes(char);
+    }).length;
+    });
+  };
 
 // reverse arrays of [[1, 2, 3], [4, 5, 6]] => [[3, 2, 1], [6, 5, 4]]
 const reversedArraysOf = function (arrays) { };
