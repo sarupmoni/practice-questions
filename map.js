@@ -80,7 +80,11 @@ const splitWordsOf = function (strings) {
 };
 
 // join arrays of [["a", "b"], ["c", "d"]] => ["ab", "cd"]
-const joinedArraysOf = function (arrayOfArrays) { };
+const joinedArraysOf = function (arrayOfArrays) {
+  return arrayOfArrays.map(function (array) {
+    return array.join("");
+  });
+};
 
 // repeat strings in ["hi", "bye"] => ["hihi", "byebye"]
 const repeatedStringsOf = function (strings) { };
