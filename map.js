@@ -120,7 +120,15 @@ const withoutVowelsOf = function (strings) {
 
 // cumulative sums of [[1, 2, 3], [4, 5, 6]] => [[1, 3, 6], [4, 9, 15]]
 // Example: cumulative sum of [1, 2, 3] is [1, 1+2, 1+2+3]
-const cumulativeSumsOf = function (arrays) { };
+const cumulativeSumsOf = function (arrays) {
+  return arrays.map(function (array) {
+    let sum = 0;
+    return array.map(function (element) {
+      sum += element;
+      return sum;
+    });
+  });
+};
 
 // reverse words in ["hello world", "goodbye moon"] => ["olleh dlrow", "eybdoog noom"]
 const reversedWordsOf = function (strings) { };
