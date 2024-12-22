@@ -472,7 +472,14 @@ const groupByGrade = function (objects) {
 
 // sort strings by length first, and then alphabetically if lengths are equal in ["cat", "banana", "apple", "kiwi"] => ["cat", "kiwi", "apple", "banana"]
 // Steps: Sort by length, then by lexicographical order.
-const sortByLengthAndAlphabet = function (strings) { };
+const sortByLengthAndAlphabet = function (strings) {
+  return strings.sort(function (string1, string2) {
+    if (string1.length === string2.length) {
+      return [string1, string2].sort();
+    }
+    return string1.length - string2.length;
+  });
+};
 
 // find the difference between the max and min values, and then normalize the array based on this range in [10, 20, 30, 5] => [0.25, 0.75, 1, 0]
 // Steps: Find min, max, calculate range, then normalize each value.
