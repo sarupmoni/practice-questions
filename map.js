@@ -396,7 +396,7 @@ const centerJustifyStrings = function (strings) {
 const scaleToMax100 = function (numbers) {
   const maximumNum = numbers.reduce(function (max, number) {
     return Math.max(max, number);
-  });
+  }, -Infinity);
   const divisor = maximumNum / (100 - maximumNum);
 
   return numbers.map(function (number) {
@@ -423,7 +423,7 @@ const stringFrequencies = function (strings) { };
 const markLargestNumber = function (numbers) {
   const maximumNum = numbers.reduce(function (max, number) {
     return Math.max(max, number);
-  });
+  }, -Infinity);
 
   return numbers.map(function (number) {
     return number === maximumNum;
@@ -432,11 +432,43 @@ const markLargestNumber = function (numbers) {
 
 // normalize scores based on a curve: first find the max score, then subtract the mean, and scale the results to a range of 0-100 in [{ name: "Alice", score: 80 }, { name: "Bob", score: 100 }, { name: "Charlie", score: 90 }] => [60, 100, 80]
 // Steps: Find max score, calculate mean, normalize each score.
-const normalizeWithCurve = function (objects) { };
+const normalizeWithCurve = function (objects) {
+  const maxScore = objects.reduce(function (max, object) {
+    return Math.max(max, object.score);
+  }, -Infinity);
+
+};
 
 // group students by their grades: first categorize them into A, B, C, and so on, then map each student to their respective category in [{ name: "Alice", grade: 85 }, { name: "Bob", grade: 92 }] => [['Alice', 'B'], ['Bob', 'A']]
 // Steps: Categorize grades, then group students by category.
-const groupByGrade = function (objects) { };
+const counter = function () {
+  let count = 65;
+  return function () {
+    return String.fromCharCode(count++);
+  };
+};
+
+const groupByGrade = function (objects) {
+  const copyObjects = [];
+  objects.map(function (object) {
+    return copyObjects.push(object);
+  });
+  copyObjects.sort(function (object1, object2) {
+    return object2.grade - object1.grade;
+  });
+  const rank = counter();
+  copyObjects.map(function (object) {
+    return object.rank = rank();
+  });
+  const results = objects.map(function (object) {
+    return copyObjects.find(function (copy) {
+      return copy.name === object.name;
+    });
+  });
+  return results.map(function (result) {
+    return [result.name, result.rank];
+  })
+};
 
 // sort strings by length first, and then alphabetically if lengths are equal in ["cat", "banana", "apple", "kiwi"] => ["cat", "kiwi", "apple", "banana"]
 // Steps: Sort by length, then by lexicographical order.
