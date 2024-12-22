@@ -199,7 +199,11 @@ const wrappedStringsOf = function (strings) {
 };
 
 // extract names from [{ name: "Alice" }, { name: "Bob" }] => ["Alice", "Bob"]
-const extractNames = function (objects) { };
+const extractNames = function (objects) {
+  return objects.map(function (object) {
+    return object.name;
+  });
+};
 
 // extract ages from [{ age: 25 }, { age: 30 }] => [25, 30]
 const extractAges = function (objects) { };
