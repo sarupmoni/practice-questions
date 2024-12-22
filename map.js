@@ -575,7 +575,23 @@ const totalSalesByMonth = function (sales) {
 // map each employee's department to their total salary, and then return an array of objects with department name and total salary in [{ name: "Alice", department: "HR", salary: 5000 }, { name: "Bob", department: "Engineering", salary: 6000 }, { name: "Charlie", department: "HR", salary: 4500 }] => [{ department: "HR", totalSalary: 9500 }, { department: "Engineering", totalSalary: 6000 }]
 // Steps: Group by department, sum the salaries for each department.
 const totalSalaryByDepartment = function (employees) {
-
+  const positions = employees.reduce(function (accumulator, employee) {
+    if (!accumulator.includes(employee.department)) {
+      accumulator.push(employee.department);
+    }
+    return accumulator;
+  }, []);
+  const totalSalary = positions.map(function (position) {
+    return employees.reduce(function (sum, employee) {
+      if (position === employee.department) {
+        return sum + employee.salary;
+      }
+      return sum;
+    }, 0);
+  });
+  return positions.map(function (position, index) {
+    return [position, totalSalary[index]];
+  });
 };
 
 // for a list of students, return an array of objects that includes the student's name and their highest grade in [{ name: "Alice", grades: { math: 80, science: 90, history: 70 } }, { name: "Bob", grades: { math: 70, science: 85, history: 95 } }] => [{ name: "Alice", highestGrade: 90 }, { name: "Bob", highestGrade: 95 }]
