@@ -540,7 +540,15 @@ return newArray.filter(function (number) {
 
 // from an array of arrays, where each array contains [name, age], return an array of names of people who are over 18, and then sort them alphabetically in [["Alice", 25], ["Bob", 17], ["Charlie", 22]] => ["Alice", "Charlie"]
 // Steps: Filter for age > 18, then sort by name.
-const filterAdultsAndSort = function (arrays) { };
+const filterAdultsAndSort = function (arrays) {
+  const adults = arrays.filter(function ([names, age]) {
+    return age > 18;
+  });
+  const adultsNames = adults.map(function (adult) {
+    return adult[0];
+  });
+  return adultsNames.sort();
+};
 
 // given an array of objects representing sales with date and amount, calculate the total sales for each month and return them as an array of arrays like [[month, total], ...] in [{ date: "2024-01-15", amount: 100 }, { date: "2024-02-10", amount: 150 }, { date: "2024-01-25", amount: 200 }] => [["2024-01", 300], ["2024-02", 150]]
 // Steps: Group by month, sum the sales for each month.
