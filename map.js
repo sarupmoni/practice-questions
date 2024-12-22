@@ -393,7 +393,16 @@ const centerJustifyStrings = function (strings) {
 };
 
 // scale all numbers proportionally so the largest number becomes 100 in [20, 50, 80] => [25, 62.5, 100]
-const scaleToMax100 = function (numbers) { };
+const scaleToMax100 = function (numbers) {
+  const maximumNum = numbers.reduce(function (max, number) {
+    return Math.max(max, number);
+  });
+  const ratio = maximumNum / (100 - maximumNum);
+
+  return numbers.map(function (number) {
+    return number + (number / ratio);
+  });
+};
 
 // map each number to the difference between it and the average of the array in [10, 20, 30] => [-10, 0, 10]
 const differencesFromMean = function (numbers) { };
