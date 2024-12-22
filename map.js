@@ -220,7 +220,11 @@ const firstLettersOfNames = function (objects) {
 };
 
 // calculate areas from [{ width: 2, height: 3 }, { width: 4, height: 5 }] => [6, 20]
-const calculateAreas = function (rectangles) { };
+const calculateAreas = function (rectangles) {
+  return rectangles.map(function (dimensions) {
+    return dimensions.width * dimensions.height;
+  });
+};
 
 // extract boolean flags from [{ active: true }, { active: false }] => [true, false]
 const extractFlags = function (objects) { };
