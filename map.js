@@ -335,8 +335,35 @@ const subtractMin = function (numbers) {
   });
 };
 
+
 // calculate ranks (1-based, descending) for scores in [{ name: "Alice", score: 80 }, { name: "Bob", score: 100 }, { name: "Charlie", score: 90 }] => [2, 1, 3]
-const calculateRanks = function (objects) { };
+const increment = function () {
+  let rank = 1;
+  return function () {
+    return rank++;
+  }
+}
+const calculateRanks = function (objects) {
+  const copyObjects = [];
+  objects.map(function (object) {
+    return copyObjects.push(object);
+  });
+  copyObjects.sort(function (object1, object2) {
+    return object2.score - object1.score;
+  });
+  const rank = increment();
+  copyObjects.map(function (object) {
+    return object.rank = rank();
+  });
+  return objects.map(function (object) {
+    return copyObjects.map(function (copy) {
+      if (object.name === copy.name) {
+        return copy.rank;
+      }
+      return "";
+    }).join("");
+  });
+};
 
 // normalize strings by the longest string length in ["cat", "elephant", "dog"] => ["cat    ", "elephant", "dog    "]
 // (pad with spaces to match the longest length)
