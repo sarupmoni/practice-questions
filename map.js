@@ -397,18 +397,29 @@ const scaleToMax100 = function (numbers) {
   const maximumNum = numbers.reduce(function (max, number) {
     return Math.max(max, number);
   });
-  const ratio = maximumNum / (100 - maximumNum);
+  const divisor = maximumNum / (100 - maximumNum);
 
   return numbers.map(function (number) {
-    return number + (number / ratio);
+    return number + (number / divisor);
   });
 };
 
 // map each number to the difference between it and the average of the array in [10, 20, 30] => [-10, 0, 10]
-const differencesFromMean = function (numbers) { };
+const differencesFromMean = function (numbers) {
+  const total = numbers.reduce(function (sum, number) {
+    return sum + number;
+  }, 0);
+  const average = total / numbers.length;
+
+  return numbers.map(function (number) {
+    return number - average;
+  });
+};
 
 // map each string to its frequency in ["apple", "banana", "apple", "apple", "banana"] => [3, 2, 3, 3, 2]
-const stringFrequencies = function (strings) { };
+const stringFrequencies = function (strings) {
+  
+};
 
 // mark the largest number in an array as true, others as false in [1, 3, 2] => [false, true, false]
 const markLargestNumber = function (numbers) { };
