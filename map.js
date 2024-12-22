@@ -523,7 +523,11 @@ const sortStudentsByAverage = function (students) {
 
 // map a list of numbers to their corresponding binary representation and then group them into arrays of equal lengths in [1, 2, 3, 4, 5] => [["1"], ["10"], ["11"], ["100"], ["101"]]
 // Steps: Convert numbers to binary, then group them into arrays.
-const mapToBinaryAndGroup = function (numbers) { };
+const mapToBinaryAndGroup = function (numbers) {
+  return numbers.map(function (number) {
+    return number.toString(2);
+  });
+};
 
 // flatten an array of arrays into a single array and then filter out only the even numbers in [[1, 2, 3], [4, 5], [6, 7, 8]] => [2, 4, 6, 8]
 // Steps: Flatten the arrays into one, then filter for even numbers.
