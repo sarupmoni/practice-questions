@@ -503,7 +503,23 @@ const percentageOfTotalSorted = function (numbers) {
 
 // map a list of students' grades in multiple subjects to their average score, and then sort the averages in descending order in [{ name: "Alice", grades: [80, 90, 85] }, { name: "Bob", grades: [70, 75, 80] }] => [{ name: "Alice", avg: 85 }, { name: "Bob", avg: 75 }]
 // Steps: Calculate average for each student, then sort by average score.
-const sortStudentsByAverage = function (students) { };
+const sortStudentsByAverage = function (students) {
+  students.map(function (student) {
+    student.total = student.grades.reduce(function (sum, grade) {
+      return sum + grade;
+    }, 0);
+    return student.total;
+  });
+  students.map(function (student) {
+    student.avg = student.total / student.grades.length;
+  });
+  students.sort(function (student1, student2) {
+    return student2 - student1;
+  });
+  return students.map(function (student) {
+    return [student.name, student.avg];
+  });
+};
 
 // map a list of numbers to their corresponding binary representation and then group them into arrays of equal lengths in [1, 2, 3, 4, 5] => [["1"], ["10"], ["11"], ["100"], ["101"]]
 // Steps: Convert numbers to binary, then group them into arrays.
