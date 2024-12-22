@@ -317,7 +317,7 @@ const normalizeScores = function (objects) {
 // calculate percentage contribution of each number in [10, 20, 30] (relative to the total sum) => [16.67, 33.33, 50]
 const percentageContributions = function (numbers) {
   const total = numbers.reduce(function (sum, number) {
-    return sum += number;
+    return sum + number;
   }, 0);
   return numbers.map(function (number) {
     return (number / total) * 100;
@@ -483,11 +483,23 @@ const sortByLengthAndAlphabet = function (strings) {
 
 // find the difference between the max and min values, and then normalize the array based on this range in [10, 20, 30, 5] => [0.25, 0.75, 1, 0]
 // Steps: Find min, max, calculate range, then normalize each value.
-const normalizeByRange = function (numbers) { };
+const normalizeByRange = function (numbers) {
+
+};
 
 // calculate the percentage of each number relative to the total sum of the array, and then sort the percentages in descending order in [100, 200, 50, 25] => [50, 25, 12.5, 12.5]
 // Steps: Calculate sum, find percentage of each number, sort in descending order.
-const percentageOfTotalSorted = function (numbers) { };
+const percentageOfTotalSorted = function (numbers) {
+  const total = numbers.reduce(function (sum, number) {
+    return sum + number;
+  }, 0);
+  const percentages = numbers.map(function (number) {
+    return number / total * 100;
+  });
+  return percentages.sort(function (number1, number2) {
+    return number2 - number1;
+  });
+};
 
 // map a list of students' grades in multiple subjects to their average score, and then sort the averages in descending order in [{ name: "Alice", grades: [80, 90, 85] }, { name: "Bob", grades: [70, 75, 80] }] => [{ name: "Alice", avg: 85 }, { name: "Bob", avg: 75 }]
 // Steps: Calculate average for each student, then sort by average score.
