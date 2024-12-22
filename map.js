@@ -367,7 +367,15 @@ const calculateRanks = function (objects) {
 
 // normalize strings by the longest string length in ["cat", "elephant", "dog"] => ["cat    ", "elephant", "dog    "]
 // (pad with spaces to match the longest length)
-const normalizeStringLengths = function (strings) { };
+const normalizeStringLengths = function (strings) {
+  const target = strings.find(function (maxLengthString, string) {
+    return maxLengthString.length > string.length ? maxLengthString : string;
+  }, "");
+
+  return strings.map(function (string) {
+    return string.padEnd(target.length, " ");
+  });
+};
 
 // normalize strings by centering them based on the longest string length in ["cat", "elephant", "dog"] => ["  cat   ", "elephant", "  dog   "]
 // (pad with spaces to justify to the center)
