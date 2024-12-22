@@ -280,7 +280,11 @@ const extractCoordinates = function (objects) {
 };
 
 // extract full name and age from [{ firstName: "Alice", lastName: "Smith", age: 25 }, { firstName: "Bob", lastName: "Brown", age: 30 }] => [["Alice Smith", 25], ["Bob Brown", 30]]
-const fullNameAndAge = function (objects) { };
+const fullNameAndAge = function (objects) {
+  return objects.map(function (object) {
+    return [object.firstName + " " + object.lastName, object.age];
+  });
+};
 
 // extract scores from [{ name: "Alice", scores: { math: 90, english: 85 } }, { name: "Bob", scores: { math: 80, english: 75 } }] => [[90, 85], [80, 75]]
 const extractScores = function (objects) { };
