@@ -250,7 +250,11 @@ const totalPrices = function (objects) {
 
 // determine if a person is an adult from [{ name: "Alice", age: 17 }, { name: "Bob", age: 22 }] => [false, true]
 // (age >= 18)
-const isAdult = function (objects) { };
+const isAdult = function (objects) {
+  return objects.map(function (object) {
+    return object.age >= 18;
+  });
+};
 
 // create abbreviations from [{ city: "New York", country: "USA" }, { city: "Los Angeles", country: "USA" }] => ["NY, USA", "LA, USA"]
 const abbreviations = function (objects) { };
