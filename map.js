@@ -315,7 +315,14 @@ const normalizeScores = function (objects) {
 };
 
 // calculate percentage contribution of each number in [10, 20, 30] (relative to the total sum) => [16.67, 33.33, 50]
-const percentageContributions = function (numbers) { };
+const percentageContributions = function (numbers) {
+  const total = numbers.reduce(function (sum, number) {
+    return sum += number;
+  }, 0);
+  return numbers.map(function (number) {
+    return (number / total) * 100;
+  });
+};
 
 // subtract the smallest number from each number in [3, 8, 1] => [2, 7, 0]
 const subtractMin = function (numbers) { };
