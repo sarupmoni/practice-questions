@@ -531,7 +531,12 @@ const mapToBinaryAndGroup = function (numbers) {
 
 // flatten an array of arrays into a single array and then filter out only the even numbers in [[1, 2, 3], [4, 5], [6, 7, 8]] => [2, 4, 6, 8]
 // Steps: Flatten the arrays into one, then filter for even numbers.
-const flattenAndFilterEven = function (arrays) { };
+const flattenAndFilterEven = function (arrays) {
+const newArray = arrays.flat();
+return newArray.filter(function (number) {
+    return number % 2 === 0;
+  });
+};
 
 // from an array of arrays, where each array contains [name, age], return an array of names of people who are over 18, and then sort them alphabetically in [["Alice", 25], ["Bob", 17], ["Charlie", 22]] => ["Alice", "Charlie"]
 // Steps: Filter for age > 18, then sort by name.
