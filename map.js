@@ -532,8 +532,8 @@ const mapToBinaryAndGroup = function (numbers) {
 // flatten an array of arrays into a single array and then filter out only the even numbers in [[1, 2, 3], [4, 5], [6, 7, 8]] => [2, 4, 6, 8]
 // Steps: Flatten the arrays into one, then filter for even numbers.
 const flattenAndFilterEven = function (arrays) {
-const newArray = arrays.flat();
-return newArray.filter(function (number) {
+  const newArray = arrays.flat();
+  return newArray.filter(function (number) {
     return number % 2 === 0;
   });
 };
@@ -552,11 +552,31 @@ const filterAdultsAndSort = function (arrays) {
 
 // given an array of objects representing sales with date and amount, calculate the total sales for each month and return them as an array of arrays like [[month, total], ...] in [{ date: "2024-01-15", amount: 100 }, { date: "2024-02-10", amount: 150 }, { date: "2024-01-25", amount: 200 }] => [["2024-01", 300], ["2024-02", 150]]
 // Steps: Group by month, sum the sales for each month.
-const totalSalesByMonth = function (sales) { };
+const totalSalesByMonth = function (sales) {
+  const dates = sales.reduce(function (accumulator, sale) {
+    if (!accumulator.includes(sale.date.slice(0, 7))) {
+      accumulator.push(sale.date.slice(0, 7));
+    }
+    return accumulator;
+  }, []);
+  const totalAmounts = dates.map(function (date) {
+    return sales.reduce(function (sum, sale) {
+      if (date === sale.date.slice(0, 7)) {
+        return sum + sale.amount;
+      }
+      return sum;
+    }, 0);
+  });
+  return dates.map(function (date, index) {
+    return [date, totalAmounts[index]];
+  });
+};
 
 // map each employee's department to their total salary, and then return an array of objects with department name and total salary in [{ name: "Alice", department: "HR", salary: 5000 }, { name: "Bob", department: "Engineering", salary: 6000 }, { name: "Charlie", department: "HR", salary: 4500 }] => [{ department: "HR", totalSalary: 9500 }, { department: "Engineering", totalSalary: 6000 }]
 // Steps: Group by department, sum the salaries for each department.
-const totalSalaryByDepartment = function (employees) { };
+const totalSalaryByDepartment = function (employees) {
+
+};
 
 // for a list of students, return an array of objects that includes the student's name and their highest grade in [{ name: "Alice", grades: { math: 80, science: 90, history: 70 } }, { name: "Bob", grades: { math: 70, science: 85, history: 95 } }] => [{ name: "Alice", highestGrade: 90 }, { name: "Bob", highestGrade: 95 }]
 // Steps: For each student, find the highest grade from their grades object.
