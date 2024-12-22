@@ -169,7 +169,13 @@ const capitalizedFirstLettersOf = function (strings) {
 };
 
 // find word lengths in ["apple pie", "banana split"] => [[5, 3], [6, 5]]
-const wordLengthsOf = function (strings) { };
+const wordLengthsOf = function (strings) {
+  return strings.map(function (string) {
+    return string.split(" ").map(function (word) {
+      return word.length;
+    });
+  });
+};
 
 // flatten nested arrays of [[1, [2, 3]], [4, [5, 6]]] => [[1, 2, 3], [4, 5, 6]]
 const flattenedArraysOf = function (arrays) { };
