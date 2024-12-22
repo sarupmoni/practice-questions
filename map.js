@@ -213,7 +213,11 @@ const extractAges = function (objects) {
 };
 
 // extract the first letters of names from [{ name: "Alice" }, { name: "Bob" }] => ["A", "B"]
-const firstLettersOfNames = function (objects) { };
+const firstLettersOfNames = function (objects) {
+  return objects.map(function (object) {
+    return object.name.at(0);
+  });
+};
 
 // calculate areas from [{ width: 2, height: 3 }, { width: 4, height: 5 }] => [6, 20]
 const calculateAreas = function (rectangles) { };
