@@ -141,10 +141,10 @@ const reversedWordsOf = function (strings) {
 // Maintain the order of their first appearance in each string
 const uniqueCharactersOf = function (strings) {
   return strings.map(function (string) {
-    return [...string].reduce(function (uniqueWord,letter) {
+    return [...string].reduce(function (uniqueWord, letter) {
       uniqueWord += uniqueWord.includes(letter) ? "" : letter;
       return uniqueWord;
-    },"");
+    }, "");
   });
 };
 
@@ -160,7 +160,13 @@ const rangesOf = function (numbers) {
 };
 
 // capitalize first letters of ["hello world", "goodbye moon"] => ["Hello World", "Goodbye Moon"]
-const capitalizedFirstLettersOf = function (strings) { };
+const capitalizedFirstLettersOf = function (strings) {
+  return strings.map(function (string) {
+    return string.split(" ").map(function (word) {
+      return word.at(0).toUpperCase() + [...word].slice(1).join("");
+    }).join(" ");
+  });
+};
 
 // find word lengths in ["apple pie", "banana split"] => [[5, 3], [6, 5]]
 const wordLengthsOf = function (strings) { };
