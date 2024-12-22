@@ -234,11 +234,19 @@ const extractFlags = function (objects) {
 };
 
 // concatenate first and last names from [{ firstName: "Alice", lastName: "Smith" }, { firstName: "Bob", lastName: "Brown" }] => ["Alice Smith", "Bob Brown"]
-const fullNames = function (objects) { };
+const fullNames = function (objects) {
+  return objects.map(function (object) {
+    return object.firstName + " " + object.lastName;
+  });
+};
 
 // calculate total prices from [{ price: 10, quantity: 2 }, { price: 5, quantity: 4 }] => [20, 20]
 // (price * quantity)
-const totalPrices = function (objects) { };
+const totalPrices = function (objects) {
+  return objects.map(function (object) {
+    return object.price * object.quantity;
+  });
+};
 
 // determine if a person is an adult from [{ name: "Alice", age: 17 }, { name: "Bob", age: 22 }] => [false, true]
 // (age >= 18)
